@@ -14,7 +14,8 @@ import {
   sourceDbUrl,
   destinationDbUrl,
   accessKeyId,
-  secretAccessKey
+  secretAccessKey,
+  region,
 } from './config'
 
 const logger = debug('mongo-transfer')
@@ -22,7 +23,7 @@ const logger = debug('mongo-transfer')
 const awsCredentials = {
   accessKeyId,
   secretAccessKey,
-  region: 'us-east-1'
+  region,
 }
 
 const mongoConnections = {}

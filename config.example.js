@@ -1,6 +1,7 @@
 export const dynamoTable = 'your-dynamo-table-name'
 export const accessKeyId = 'YOUR-ACCESS-KEY-ID'
 export const secretAccessKey = 'SECRET-ACCESS-KEY'
+export const region = 'us-east-1'
 export const sourceDbUrl = 'mongodb://localhost:27017/source_db_name'
 export const destinationDbUrl = 'mongodb://localhost:27017/destination_db_name'
 export const dynamoTableOpts = {
