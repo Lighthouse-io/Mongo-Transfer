@@ -153,7 +153,8 @@ function transferDocuments(opts, callback) {
 
   if (startValue) {
     query[sort.field] = {
-      $lt: startValue
+      // TODO remove dependency on date
+      $lt: new Date(startValue)
     }
   }
 
@@ -194,10 +195,12 @@ function transferDocuments(opts, callback) {
       // store start value so we can resume transfer if possbile
       const table = dynasty.table(dynamoTable)
 
-      logger(`Updating start value in Dynamo ${name}: ${newStartValue}`)
-      table.update(name, {
-        value: newStartValue
-      }).then(resp => {
+      const json = {
+        value: newStartValue.toString()
+      }
+
+      logger('Updating  start value in Dynamo', name, json)
+      table.update(name, json).then(resp => {
         const newOpts = Object.assign({}, opts, {
           startValue: newStartValue
         })
